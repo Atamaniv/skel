@@ -6,5 +6,11 @@
     {% endif %}
     <h1>{{ content.title }}</h1>
 
+
+    {% include 'includes/blocks.html.twig' with {
+        content: {blocks: content.blocks},
+        view: {blocks: view.blocks},
+    } only %}
+
     {{ content.article|raw }}
 {% endblock %}

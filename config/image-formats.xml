@@ -14,9 +14,12 @@
         <scale y="400"/>
     </format>
 
-    <!--
-    Render an image from the media_selection in a specific format the following way:
+    <format key="200x">
+        <meta>
+            <title lang="en">Block Image</title>
+            <title lang="de">Block Bild</title>
+        </meta>
 
-    <img src="{{ image.thumbnails['300x'] }}" alt="{{ image.title }}" title="{{ image.description|default(image.title) }}">
-    -->
+        <scale x="200"/>
+    </format>
 </formats>
