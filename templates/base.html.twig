@@ -44,10 +44,17 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-
     <footer>
         {% block footer %}
-            <p>Copyright {{ 'now'|date('Y') }} SULU</p>
+            <div class="container">
+                {% for item in sulu_navigation_root_flat('footer') %}
+                    <a href="{{ sulu_content_path(item.url) }}">{{ item.title }}</a>
+
+                    {% if not loop.last %}&nbsp;|&nbsp;{% endif %}
+                {% endfor %}
+
+                <span class="text-muted float-right">Copyright {{ 'now'|date('Y') }} SULU</span>
+            </div>
         {% endblock %}
     </footer>
 
