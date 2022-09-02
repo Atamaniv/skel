@@ -37,6 +37,20 @@
                         <a class="nav-link" href="{{ localization.url }}">{{ localization.locale }}</a>
                     {% endfor %}
                 </div>
+
+                <div class="navbar-nav">
+                    <form method="POST" action="" id="form_ID">
+                        Select your language:
+                        <select name="localization" id="select_ID" >
+                            {% for localization in localizations %}
+                                <option value={{ localization.locale }}
+                                      {{app.request.locale == localization.locale ? 'selected="selected"':""}} >
+                                    {{ localization.locale }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
             </nav>
         {% endblock %}
     </header>
@@ -63,6 +77,12 @@
         {% endblock %}
     </footer>
 
+    <script type="text/javascript">
+        document.getElementById('select_ID').onchange = function(){
+            document.getElementById('form_ID').action = '/'+this.value;
+            document.getElementById('form_ID').submit()
+        }
+    </script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
